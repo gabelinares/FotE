@@ -1,0 +1,105 @@
+:root {
+  --bg: #0b0e12;
+  --fg: #ddf0ff;
+  --muted: #86a4c3;
+  --accent: #7dd3fc;
+  --accent-2: #a7f3d0;
+  --warn: #f59e0b;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(1200px 800px at 20% 10%, #111826, #0b0e12);
+  color: var(--fg);
+  font: 14px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  display: grid;
+  place-items: center;
+}
+
+#app {
+  position: relative;
+  width: min(980px, 94vw);
+  height: min(640px, 86vh);
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  background: #0a1020e6;
+  box-shadow: 0 18px 64px rgba(0,0,0,.55), inset 0 0 80px rgba(12,28,54,.45);
+  overflow: hidden;
+}
+
+#crt {
+  pointer-events: none;
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.03), rgba(255,255,255,.03) 1px, transparent 2px, transparent 4px),
+    radial-gradient(1200px 600px at 50% 100%, rgba(0,0,0,.7), transparent 60%);
+  mix-blend-mode: overlay;
+  animation: hum 6s ease-in-out infinite;
+}
+@keyframes hum { 0%,100% { opacity: .24 } 50% { opacity: .3 } }
+
+#screen {
+  margin: 0;
+  padding: 16px;
+  white-space: pre-wrap;
+  overflow: auto;
+  text-shadow: 0 0 6px rgba(125,211,252,.25);
+}
+.copyhint { color: var(--muted); font-style: italic; }
+
+#toolbar {
+  display: flex; gap: 16px; align-items: center;
+  padding: 8px 12px;
+  border-top: 1px solid #1f2937;
+  color: var(--muted);
+  background: linear-gradient(0deg, #0a1426, #0b1426);
+}
+#toolbar code { color: var(--accent-2); }
+
+#promptline {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  border-top: 1px solid #1f2937;
+  padding: 10px 12px;
+  background: #0b1426;
+}
+#prompt { color: var(--accent-2); opacity: .9; }
+#input {
+  border: none; outline: none; background: transparent; color: var(--fg);
+}
+#input::placeholder { color: var(--muted); }
+
+/* Clickable tokens from ls */
+.token { cursor: pointer; padding: 0 2px; }
+.token:hover { background: #0f1b33; }
+.dir { color: var(--accent); }
+.file { color: #a5b4fc; }
+.exec { color: #fca5a5; }
+.warn { color: var(--warn); }
+
+/* Help overlay */
+#overlay {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  background: rgba(5,8,16,.55); backdrop-filter: blur(2px);
+}
+.panel {
+  width: min(680px, 92vw);
+  background: #0b1426;
+  border: 1px solid #1f2a44;
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.5);
+}
+.panel h2 { margin: 0 0 8px; }
+.panel button {
+  margin-top: 8px; background: #10213a; color: var(--fg);
+  border: 1px solid #1e3a5f; padding: 6px 12px; border-radius: 8px; cursor: pointer;
+}
+.panel button:hover { background: #132949; }
+
+/* Selection glow */
+::selection { background: #1f3a5a; color: #eaf6ff; }

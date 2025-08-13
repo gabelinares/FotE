@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Flower of the Eden (FotE)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app" aria-label="FotE Terminal">
+    <div id="crt"></div>
+    <pre id="screen" aria-live="polite"></pre>
+    <div id="toolbar">
+      <span>F1 Help</span>
+      <span>↑/↓ History</span>
+      <span>Tab Complete</span>
+      <span>Ctrl+L Clear</span>
+      <span>Click items in <code>ls</code></span>
+    </div>
+    <div id="promptline"><span id="prompt"></span><input id="input" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal input"></div>
+  </div>
+
+  <!-- Help Overlay -->
+  <div id="overlay" hidden>
+    <div class="panel">
+      <h2>FotE Terminal — Help</h2>
+      <p><b>Core:</b> <code>ls</code>, <code>cd &lt;path&gt;</code>, <code>open|cat &lt;file&gt;</code>, <code>run &lt;exe&gt;</code>, <code>history</code>, <code>clear</code>, <code>help</code></p>
+      <p><b>Unlockables:</b> <code>calibrate</code>, <code>bloom</code>, <code>aim</code>, <code>atlas</code>, <code>transmit</code></p>
+      <p><b>UX:</b> ↑/↓ history, Tab to complete, Ctrl+L to clear, click <i>blue</i> items from <code>ls</code>, double-click any output line to copy.</p>
+      <button id="closeOverlay">Close (Esc)</button>
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
